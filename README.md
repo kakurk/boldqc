@@ -1,5 +1,5 @@
 # BOLD Quality Control (beta)
-BOLDQC is an automated quality control pipeline for BOLD MRI scans. BOLDQC
+BOLDQC is an automated quality control pipeline for functional MRI scans. BOLDQC
 is built on top of the excellent
 [`dcm2niix`](https://github.com/rordenlab/dcm2niix), 
 [`FreeSurfer`](https://surfer.nmr.mgh.harvard.edu/),
