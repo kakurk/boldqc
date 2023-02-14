@@ -24,6 +24,10 @@ LIBEXEC = os.path.realpath(os.path.join(os.path.dirname(boldqc.__file__), 'libex
 os.environ['PATH'] = LIBEXEC + ':' + os.environ['PATH']
 
 def do(args):
+    if args.insecure:
+        logger.warning('disabling ssl certificate verification')
+        yaxil.CHECK_CERTIFICATE = False
+
     # create job executor and job array
     if args.scheduler:
         E = executors.get(args.scheduler, partition=args.partition)

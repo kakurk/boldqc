@@ -15,6 +15,10 @@ import yaxil.bids
 logger = logging.getLogger(__name__)
 
 def do(args):
+    if args.insecure:
+        logger.warning('disabling ssl certificate verification')
+        yaxil.CHECK_CERTIFICATE = False
+
     # load authentication data and set environment variables for ArcGet.py
     auth = yaxil.auth2(
         args.xnat_alias,
