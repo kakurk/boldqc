@@ -10,7 +10,7 @@ sphinx-rtd-theme = "*"
 [packages]
 selfie = "*"
 executors = "*"
-yaxil = "*"
+yaxil = ">=0.9.2"
 matplotlib = "*"
 nibabel = "*"
 scipy = "*"
