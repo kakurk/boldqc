@@ -10,9 +10,9 @@ sphinx-rtd-theme = "*"
 [packages]
 selfie = "*"
 executors = "*"
-yaxil = ">=0.9.3"
+yaxil = ">=0.10.0"
 matplotlib = "*"
-nibabel = "*"
+nibabel = "~=4.0.0"
 scipy = "*"
 boldqc = {editable = true,path = "."}
 

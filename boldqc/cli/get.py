@@ -67,6 +67,10 @@ def get_bold(args, auth, run, scan, verbose=False):
         cmd.extend([
             '--insecure'
         ])
+    if args.in_mem:
+        cmd.extend([
+            '--in-mem'
+        ])
     cmd.extend([
         '--config', '-'
     ])

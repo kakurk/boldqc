@@ -16,6 +16,8 @@ def main():
     subparsers = parser.add_subparsers(help='sub-command help')
     # get mode
     parser_get = subparsers.add_parser('get', help='get -h')
+    parser_get.add_argument('--in-mem', action='store_true',
+        help='Download data from XNAT in memory')
     parser_get.add_argument('--label', required=True,
         help='XNAT MR Session name')
     parser_get.add_argument('--project',
@@ -66,6 +68,8 @@ def main():
     parser_process.set_defaults(func=cli.process.do)
     # tandem (run get and process)
     parser_tandem = subparsers.add_parser('tandem', help='tandem -h')
+    parser_tandem.add_argument('--in-mem', action='store_true',
+        help='Download data from XNAT in memory')
     parser_tandem.add_argument('--label', required=True,
         help='XNAT MR Session name')
     parser_tandem.add_argument('--project',

@@ -285,7 +285,7 @@ import sys
 ## --- file
 fname = "$outdir/moco.par"
 h = open(fname, "r")
-data = np.array([], dtype=np.float)
+data = np.array([], dtype=float)
 for line in h.readlines():
     row = line.strip().split("  ")
     row = [float(i) for i in row]
