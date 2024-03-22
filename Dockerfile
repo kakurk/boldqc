@@ -38,6 +38,7 @@ RUN mkdir -p "${BQC_PREFIX}"
 ENV PIPENV_VENV_IN_PROJECT=1
 WORKDIR "${BQC_PREFIX}"
 RUN pipenv install boldqc=="${BQC_VERSION}"
+ENV PIPENV_PIPFILE="${BQC_PREFIX}/Pipfile"
 
 # fsl environment
 ENV FSLDIR="${FSL_PREFIX}"
