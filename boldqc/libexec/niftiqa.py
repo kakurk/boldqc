@@ -1220,7 +1220,7 @@ class NeuroImage(NeuroImageFileBase):
         filename = self.get_output_filename_root() + add_to_filename + self.get_extension()
         description = title+" derived from '"+str(self.get_filename())+"'"
         self._history.add("Calculated %s" % description)
-        header = self.get_image().get_header().copy()
+        header = self.get_image().header.copy()
         nim = nibabel.Nifti1Image(data, numpy.eye(4), header)
         nim.set_filename(filename)
         if dtype is not None:
