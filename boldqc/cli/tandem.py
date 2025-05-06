@@ -29,16 +29,18 @@ def do(args):
     os.environ['XNAT_HOST'] = auth.url
     os.environ['XNAT_USER'] = auth.username
     os.environ['XNAT_PASS'] = auth.password
+
     # query BOLD scans
     with yaxil.session(auth) as ses:
         scans = col.defaultdict(dict)
-        run = 0
         for scan in ses.scans(label=args.label, project=args.project):
-            scan_id = scan['id']
-            scan_type = scan['type']
-            if scan_type == 'BOLD':
-                run += 1
-                scans[run]['bold'] = scan_id
+            note = scan['note']
+            bold_match = re.match('.*(^|\s)#BOLD(?P<run>_\d+)?(\s|$).*', note, flags=re.IGNORECASE)
+            if bold_match:
+                run = bold_match.group('run')
+                run = re.sub('[^0-9]', '', run or '1')
+                run = int(run)
+                scans[run]['bold'] = scan['id']
 
     subject_label = scan['subject_label']
     logger.info(json.dumps(scans, indent=2))
