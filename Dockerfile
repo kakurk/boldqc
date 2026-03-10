@@ -32,12 +32,12 @@ RUN rm "/tmp/dcm2niix_lnx.zip"
 
 # install boldqc
 ARG BQC_PREFIX="/sw/apps/boldqc"
-ARG BQC_VERSION="0.4.1"
+ARG BQC_VERSION="0.0.1"
 RUN dnf install -y compat-openssl10 redhat-lsb-core
 RUN mkdir -p "${BQC_PREFIX}"
 ENV PIPENV_VENV_IN_PROJECT=1
 WORKDIR "${BQC_PREFIX}"
-RUN pipenv install boldqc=="${BQC_VERSION}"
+RUN pipenv install boldqc-bu=="${BQC_VERSION}"
 ENV PIPENV_PIPFILE="${BQC_PREFIX}/Pipfile"
 
 # fsl environment
