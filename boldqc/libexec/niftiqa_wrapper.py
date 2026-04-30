@@ -8,6 +8,7 @@ import atexit
 import logging
 import argparse
 import tempfile
+import numpy
 import nibabel as nib
 import subprocess as sp
 
@@ -119,7 +120,7 @@ def mosaic(inp, output, xy, win=None):
     if xy[1]:
         nth_vox = math.ceil(float(z) / (xy[0] * xy[1]))
     # read the image data payload
-    niid = nii.get_data()
+    niid = numpy.asanyarray(nii.dataobj)
     niid_min, niid_max = niid.min(), niid.max()
     logger.debug('image=%s, min=%s, max=%s', inp, niid_min, niid_max)
     # the order of arguments is important

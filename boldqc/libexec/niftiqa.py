@@ -1302,9 +1302,9 @@ class NeuroImage(NeuroImageFileBase):
                 raise Exception('ERROR: Cannot get Nifti1Image object without filename')
             self.set_image(nibabel.load(self.get_filename()))
             if self._skip:
-                self._raw_data = self._nimg.get_data()[:,:,:,self._skip:]
+                self._raw_data = numpy.asanyarray(self._nimg.dataobj)[:,:,:,self._skip:]
             else:
-                self._raw_data = self._nimg.get_data()
+                self._raw_data = numpy.asanyarray(self._nimg.dataobj)
         return self._nimg
 
     def get_number_of_slices(self):
@@ -1322,7 +1322,7 @@ class NeuroImage(NeuroImageFileBase):
             if self._nimg is None:
                 self.get_image()
             else:
-                self._raw_data = self._nimg.get_data()
+                self._raw_data = numpy.asanyarray(self._nimg.dataobj)
         return self._raw_data
 
     def get_masked_data(self):

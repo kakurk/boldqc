@@ -9,7 +9,7 @@ requires = [
     'yaxil',
     'matplotlib',
     'pybids',
-    'nibabel<5.0.0',
+    'nibabel>=5.4.2',
     'scipy',
     'numpy<2.0'
 ]
